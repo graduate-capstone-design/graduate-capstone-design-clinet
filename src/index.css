@@ -7,3 +7,7 @@ body {
   align-items: center;
   background-color: #f5f5f5;
 }
+
+:root {
+  --main-color: #83d0a1;
+}
