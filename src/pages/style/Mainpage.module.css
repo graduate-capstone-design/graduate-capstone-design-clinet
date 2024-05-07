@@ -42,7 +42,7 @@
   height: 200px;
   border-radius: 8px;
   border: none;
-  background-color: var(--main-color);
+  background-color: var(--base-color);
   font-family: "Cute Font", "Hi Melody", sans-serif;
   font-size: 60px;
   transition: transform 0.3s;
@@ -50,7 +50,7 @@
 
 .btn:hover {
   transform: scale(1.2);
-  border: 5px solid red;
+  border: 5px solid var(--main-color);
 }
 
 .input {
