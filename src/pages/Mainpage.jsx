@@ -8,6 +8,7 @@ import ResponsiveAppBar from "../components/Nav/ResponsiveAppBar";
 
 // Svg
 import searchIcon from "../asset/svg/search.svg";
+import { useNavigate } from "react-router-dom";
 
 const data = { 음식점: "restaurant", 레시피: "recipe" };
 

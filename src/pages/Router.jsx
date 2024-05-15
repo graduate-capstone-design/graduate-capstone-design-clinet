@@ -1,9 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./Mainpage";
-import UserInfo from "./UserInfo";
-import Ranking from "./Ranking";
-import SearchHistory from "./SearchHistory";
+
 import RootPage from "./RootPage";
+
+// Main
+import MainPage from "./Mainpage";
+
+// User
+import UserInfo from "./User/UserInfo";
+import Ranking from "./Rank/Ranking";
+import SearchHistory from "./User/SearchHistory";
+
+// List
+import RestaurantList from "./ListPage/RestaurantList";
+import RecipeList from "./ListPage/RecipeList";
 
 const Router = () => {
   return (
@@ -14,6 +23,8 @@ const Router = () => {
         <Route path="userinfo" element={<UserInfo />} />
         <Route path="ranking" element={<Ranking />} />
         <Route path="search-history" element={<SearchHistory />} />
+        <Route path="search-result/restaurant" element={<RestaurantList />} />
+        <Route path="search-result/recipe" element={<RecipeList />} />
       </Routes>
     </>
   );

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Cute+Font&family=Hi+Melody&display=swap");
+
+.top {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+}
+
+.mainContainer {
+  width: 1280px;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchResult {
+  margin-top: 30px;
+  font-size: 50px;
+  font-family: "Cute Font", "Hi Melody", sans-serif;
+}
+
+.ul {
+  width: 1000px;
+  height: 500px;
+  overflow: auto;
+}
+
+.li {
+  width: 99%;
+  height: 110px;
+  background-color: var(--base-color);
+  border-radius: 15px;
+  font-family: "Cute Font", "Hi Melody", sans-serif;
+  border: 1px solid var(--main-color);
+  list-style-type: none;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.li_index {
+  font-size: 40px;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+}
+
+.li_name {
+  font-size: 50px;
+  width: fit-content;
+  position: absolute;
+  top: 20px;
+  left: 60px;
+}
+
+.li_detail {
+  width: 500px;
+  height: 80px;
+  background-color: yellow;
+  position: absolute;
+  top: 15px;
+  right: 80px;
+  font-size: 30px;
+}
