@@ -12,7 +12,10 @@ import SearchHistory from "./User/SearchHistory";
 
 // List
 import RestaurantList from "./ListPage/RestaurantList";
+
+// List
 import RecipeList from "./ListPage/RecipeList";
+import RestaurantDetail from "./ListPage/ListDetail/RestaurantDetail";
 
 const Router = () => {
   return (
@@ -25,6 +28,10 @@ const Router = () => {
         <Route path="search-history" element={<SearchHistory />} />
         <Route path="search-result/restaurant" element={<RestaurantList />} />
         <Route path="search-result/recipe" element={<RecipeList />} />
+        <Route
+          path="search-detail/:restaurant_name"
+          element={<RestaurantDetail />}
+        />
       </Routes>
     </>
   );

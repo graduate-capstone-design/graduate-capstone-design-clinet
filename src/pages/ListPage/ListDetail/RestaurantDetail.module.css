@@ -1,0 +1,13 @@
+.top {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+}
+
+.mainContainer {
+  width: 1280px;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
