@@ -1,9 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./Mainpage";
-import UserInfo from "./UserInfo";
-import Ranking from "./Ranking";
-import SearchHistory from "./SearchHistory";
+
+// Pages
 import RootPage from "./RootPage";
+import MainPage from "./Mainpage";
+import UserInfo from "./User/UserInfo";
+import Ranking from "./Rank/Ranking";
+import SearchHistory from "./User/SearchHistory";
+import RecipePage from "./Recipepage";
+import RecipeIn from "./RecipeIn";
+
+// List
+import RestaurantList from "./ListPage/RestaurantList";
+import RecipeList from "./ListPage/RecipeList";
+import RestaurantDetail from "./ListPage/ListDetail/RestaurantDetail";
 
 const Router = () => {
   return (
@@ -14,6 +23,14 @@ const Router = () => {
         <Route path="userinfo" element={<UserInfo />} />
         <Route path="ranking" element={<Ranking />} />
         <Route path="search-history" element={<SearchHistory />} />
+        <Route path="search-result/restaurant" element={<RestaurantList />} />
+        <Route path="search-result/recipe" element={<RecipeList />} />
+        <Route
+          path="search-detail/:restaurant_name"
+          element={<RestaurantDetail />}
+        />
+        <Route path="recipe/:query" element={<RecipePage />} />
+        <Route path="recipein/:id" element={<RecipeIn />} />
       </Routes>
     </>
   );
