@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+.top {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+}
+
+.mainContainer {
+  width: 1280px;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.leftColumn,
+.rightColumn {
+  flex: 1;
+  min-width: 300px;
+  margin: 10px;
+}
+
+.imageSection {
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
+
+.infoSection {
+  margin-top: 20px;
+}
+
+.nameRating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipeInfo {
+  margin-top: 10px;
+}
+
+.linksBox {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 5px 0;
+}
+
+.rating {
+  background-color: yellow;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 100px;
+}
+
+/* 추가된 스타일 */
+.videoSection {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.videoIframe {
+  width: 520px;
+  height: 250px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  padding: 10px 20px;
+  background-color: #83d0a1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Cute Font', 'Hi Melody', sans-serif;
+  transform: translateX(650%);
+  margin-top: 10px;
+}
+
+.backBtn:hover {
+  background-color: #45815c;
+}
