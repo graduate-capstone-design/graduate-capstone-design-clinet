@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // style
 import styles from "./style/Mainpage.module.css";
@@ -8,13 +9,13 @@ import ResponsiveAppBar from "../components/Nav/ResponsiveAppBar";
 
 // Svg
 import searchIcon from "../asset/svg/search.svg";
-import { useNavigate } from "react-router-dom";
 
 const data = { 음식점: "restaurant", 레시피: "recipe" };
 
 const MainPage = () => {
   const [search, setSearch] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   // 음식점 버튼 클릭 핸들러
   const handleRestaurantClick = () => {
@@ -23,6 +24,7 @@ const MainPage = () => {
 
   // 레시피 버튼 클릭 핸들러
   const handleRecipeClick = () => {
+    navigate(`/recipe/${inputValue}`);
     setSearch(data["레시피"]);
   };
 

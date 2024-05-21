@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "./style/Rootpage.module.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import styles from './style/Rootpage.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const RootPage = () => {
   const navigate = useNavigate();
 
   const navigateToMain = () => {
-    navigate("main");
+    navigate('main');
   };
   return (
     <div className={styles.top}>

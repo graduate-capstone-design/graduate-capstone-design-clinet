@@ -1,19 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 
+// Pages
 import RootPage from "./RootPage";
-
-// Main
 import MainPage from "./Mainpage";
-
-// User
 import UserInfo from "./User/UserInfo";
 import Ranking from "./Rank/Ranking";
 import SearchHistory from "./User/SearchHistory";
+import RecipePage from "./Recipepage";
+import RecipeIn from "./RecipeIn";
 
 // List
 import RestaurantList from "./ListPage/RestaurantList";
-
-// List
 import RecipeList from "./ListPage/RecipeList";
 import RestaurantDetail from "./ListPage/ListDetail/RestaurantDetail";
 
@@ -32,6 +29,8 @@ const Router = () => {
           path="search-detail/:restaurant_name"
           element={<RestaurantDetail />}
         />
+        <Route path="recipe/:query" element={<RecipePage />} />
+        <Route path="recipein/:id" element={<RecipeIn />} />
       </Routes>
     </>
   );
