@@ -1,53 +1,54 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import ResponsiveAppBar from "../components/Nav/ResponsiveAppBar";
-import styles from "./style/RecipeIn.module.css";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import ResponsiveAppBar from '../../../components/Nav/ResponsiveAppBar';
+import styles from './RecipeDetail.module.css';
+
+const fetchRecipe = async (setRecipe) => {
+  const data = {
+    image: 'https://via.placeholder.com/150?text=Recipe+Image',
+    name: '간장치킨.',
+    rating: 4.5,
+    calories: '200 kcal',
+    ingredients: '간장, 설탕, 마늘, 닭고기',
+    basicRecipe: '모든 재료를 섞어 닭고기에 발라 구워주세요.',
+  };
+  setRecipe(data);
+};
+
+const fetchYouTubeVideos = async (recipe, setVideoIds, setErrorMessage) => {
+  const API_KEY = 'AIzaSyCqItFIbQGul_PZDk_GG2JTcJ9LQ4odJ7E';
+  const query = `${recipe.name} 레시피`;
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${encodeURIComponent(
+    query
+  )}&key=${API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.items && data.items.length > 0) {
+      const ids = data.items.map((item) => item.id.videoId);
+      setVideoIds(ids);
+    }
+  } catch (error) {
+    console.error('Error fetching YouTube videos:', error);
+    setErrorMessage('유튜브 동영상을 불러오는 중 오류가 발생했습니다.');
+  }
+};
 
 const Recipein = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [videoIds, setVideoIds] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchRecipe = async () => {
-      const data = {
-        image: "https://via.placeholder.com/150?text=Recipe+Image",
-        name: "간장치킨.",
-        rating: 4.5,
-        calories: "200 kcal",
-        ingredients: "간장, 설탕, 마늘, 닭고기",
-        basicRecipe: "모든 재료를 섞어 닭고기에 발라 구워주세요.",
-      };
-      setRecipe(data);
-    };
-
-    fetchRecipe();
+    fetchRecipe(setRecipe);
   }, [id]);
 
   useEffect(() => {
     if (recipe) {
-      const fetchYouTubeVideos = async () => {
-        const API_KEY = "AIzaSyCqItFIbQGul_PZDk_GG2JTcJ9LQ4odJ7E";
-        const query = `${recipe.name} 레시피`;
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${encodeURIComponent(
-          query
-        )}&key=${API_KEY}`;
-
-        try {
-          const response = await fetch(url);
-          const data = await response.json();
-          if (data.items && data.items.length > 0) {
-            const ids = data.items.map((item) => item.id.videoId);
-            setVideoIds(ids);
-          }
-        } catch (error) {
-          console.error("Error fetching YouTube videos:", error);
-        }
-      };
-
-      fetchYouTubeVideos();
+      fetchYouTubeVideos(recipe, setVideoIds, setErrorMessage);
     }
   }, [recipe]);
 

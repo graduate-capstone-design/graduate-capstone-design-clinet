@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cute+Font&family=Hi+Melody&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Hi+Melody&display=swap');
 
 .top {
   width: 1280px;
@@ -25,7 +25,7 @@
 }
 
 .btnTitle {
-  font-family: "Cute Font", "Hi Melody", sans-serif;
+  font-family: 'Cute Font', 'Hi Melody', sans-serif;
   font-size: 70px;
   text-align: center;
 }
@@ -43,7 +43,7 @@
   border-radius: 8px;
   border: none;
   background-color: var(--base-color);
-  font-family: "Cute Font", "Hi Melody", sans-serif;
+  font-family: 'Cute Font', 'Hi Melody', sans-serif;
   font-size: 60px;
   transition: transform 0.3s;
 }
@@ -51,6 +51,10 @@
 .btn:hover {
   transform: scale(1.2);
   border: 5px solid var(--main-color);
+}
+
+.btn.active {
+  border: 5px solid var(--main-color); /* 선택된 버튼의 기본 보더 스타일 */
 }
 
 .input {
@@ -61,13 +65,13 @@
   border: 3px solid var(--main-color);
   padding: 10px 0 10px 20px;
   box-sizing: border-box;
-  font-family: "Cute Font", "Hi Melody", sans-serif;
+  font-family: 'Cute Font', 'Hi Melody', sans-serif;
   font-size: 30px;
   color: #0f473f;
 }
 
 .input::placeholder {
-  font-family: "Cute Font", "Hi Melody", sans-serif;
+  font-family: 'Cute Font', 'Hi Melody', sans-serif;
   font-size: 30px;
   color: #0f473f;
 }

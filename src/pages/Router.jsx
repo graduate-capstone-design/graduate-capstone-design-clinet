@@ -1,18 +1,17 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 
 // Pages
-import RootPage from "./RootPage";
-import MainPage from "./Mainpage";
-import UserInfo from "./User/UserInfo";
-import Ranking from "./Rank/Ranking";
-import SearchHistory from "./User/SearchHistory";
-import RecipePage from "./Recipepage";
-import RecipeIn from "./RecipeIn";
+import RootPage from './RootPage';
+import MainPage from './Mainpage';
+import UserInfo from './User/UserInfo';
+import Ranking from './Rank/Ranking';
+import SearchHistory from './User/SearchHistory';
 
 // List
-import RestaurantList from "./ListPage/RestaurantList";
-import RecipeList from "./ListPage/RecipeList";
-import RestaurantDetail from "./ListPage/ListDetail/RestaurantDetail";
+import RestaurantList from './ListPage/RestaurantList';
+import RecipeList from './ListPage/RecipeList';
+import RestaurantDetail from './ListPage/ListDetail/RestaurantDetail';
+import RecipeDetail from './ListPage/ListDetail/RecipeDetail';
 
 const Router = () => {
   return (
@@ -24,13 +23,12 @@ const Router = () => {
         <Route path="ranking" element={<Ranking />} />
         <Route path="search-history" element={<SearchHistory />} />
         <Route path="search-result/restaurant" element={<RestaurantList />} />
-        <Route path="search-result/recipe" element={<RecipeList />} />
+        <Route path="recipe/:query" element={<RecipeList />} />
         <Route
           path="search-detail/:restaurant_name"
           element={<RestaurantDetail />}
         />
-        <Route path="recipe/:query" element={<RecipePage />} />
-        <Route path="recipein/:id" element={<RecipeIn />} />
+        <Route path="recipe-detail/:id" element={<RecipeDetail />} />
       </Routes>
     </>
   );
