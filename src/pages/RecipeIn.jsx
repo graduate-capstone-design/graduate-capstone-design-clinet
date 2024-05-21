@@ -14,7 +14,7 @@ const Recipein = () => {
     const fetchRecipe = async () => {
       const data = {
         image: 'https://via.placeholder.com/150?text=Recipe+Image',
-        name: '간장치킨',
+        name: '간장치킨.',
         rating: 4.5,
         calories: '200 kcal',
         ingredients: '간장, 설탕, 마늘, 닭고기',
