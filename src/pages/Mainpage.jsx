@@ -10,7 +10,10 @@ import ResponsiveAppBar from '../components/Nav/ResponsiveAppBar';
 // Svg
 import searchIcon from '../asset/svg/search.svg';
 
-const data = { 음식점: 'restaurant', 레시피: 'recipe' };
+// Api
+import getSeachList from '../api/getSeachList';
+
+const data = { 음식점: 'restaurants', 레시피: 'recipes' };
 
 const MainPage = () => {
   const [search, setSearch] = useState('');
@@ -31,21 +34,20 @@ const MainPage = () => {
     setInputValue(e.target.value);
   };
 
-  const handleSearch = () => {
-    if (search == data['레시피']) {
-      navigate(`/recipe/${inputValue}`);
-    } else if (search === data['음식점']) {
-      navigate(`search-result/restaurant`);
+  const handleSearch = async (type, foodName) => {
+    const results = await getSeachList(type, foodName);
+    navigate(`/search-result/${type}/${foodName}`, {
+      state: { results, foodName },
+    });
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch(search, inputValue);
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSearch();
-    }
-  };
-
-  console.log(inputValue);
+  console.log(search, inputValue);
 
   return (
     <div className={styles.top}>
@@ -73,6 +75,7 @@ const MainPage = () => {
               레시피
             </button>
           </div>
+          <div className={styles.state}>현재 선택된 상태 : {search}</div>
         </div>
         <div className={styles.inputContainer}>
           <input
@@ -84,7 +87,10 @@ const MainPage = () => {
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
-          <div className={styles.iconContainer} onClick={handleSearch}>
+          <div
+            onClick={() => handleSearch(search, inputValue)}
+            className={styles.iconContainer}
+          >
             <img src={searchIcon} alt="Search" className={styles.icon} />
           </div>
         </div>

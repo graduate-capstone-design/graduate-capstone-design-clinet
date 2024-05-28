@@ -28,6 +28,7 @@
   font-family: 'Cute Font', 'Hi Melody', sans-serif;
   font-size: 70px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .btnBox {
@@ -53,8 +54,10 @@
   border: 5px solid var(--main-color);
 }
 
-.btn.active {
-  border: 5px solid var(--main-color); /* 선택된 버튼의 기본 보더 스타일 */
+.state {
+  margin-top: 50px;
+  font-size: 30px;
+  font-family: 'Cute Font', 'Hi Melody', sans-serif;
 }
 
 .input {

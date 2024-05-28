@@ -2,22 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ResponsiveAppBar from '../../../components/Nav/ResponsiveAppBar';
 import styles from './RecipeDetail.module.css';
+import getDetail from '../../../api/getDetail';
 
-const fetchRecipe = async (setRecipe) => {
-  const data = {
-    image: 'https://via.placeholder.com/150?text=Recipe+Image',
-    name: '간장치킨.',
-    rating: 4.5,
-    calories: '200 kcal',
-    ingredients: '간장, 설탕, 마늘, 닭고기',
-    basicRecipe: '모든 재료를 섞어 닭고기에 발라 구워주세요.',
-  };
-  setRecipe(data);
-};
-
-const fetchYouTubeVideos = async (recipe, setVideoIds, setErrorMessage) => {
+// 유튜브 동영상을 검색하여 비디오 ID 배열을 설정하는 함수
+const fetchYouTubeVideos = async (recipeName, setVideoIds, setErrorMessage) => {
   const API_KEY = 'AIzaSyCqItFIbQGul_PZDk_GG2JTcJ9LQ4odJ7E';
-  const query = `${recipe.name} 레시피`;
+  const query = `${recipeName} 레시피`;
   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${encodeURIComponent(
     query
   )}&key=${API_KEY}`;
@@ -35,20 +25,30 @@ const fetchYouTubeVideos = async (recipe, setVideoIds, setErrorMessage) => {
   }
 };
 
-const Recipein = () => {
+// 레시피 정보를 API에서 가져와 설정하는 함수
+const fetchRecipe = async (id, setRecipe) => {
+  try {
+    const recipeData = await getDetail(id);
+    setRecipe(recipeData);
+  } catch (error) {
+    console.error('Error fetching recipe details:', error);
+  }
+};
+
+const RecipeDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState(null);
   const [videoIds, setVideoIds] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchRecipe(setRecipe);
+    fetchRecipe(id, setRecipe);
   }, [id]);
 
   useEffect(() => {
     if (recipe) {
-      fetchYouTubeVideos(recipe, setVideoIds, setErrorMessage);
+      fetchYouTubeVideos(recipe.foodName, setVideoIds, setErrorMessage);
     }
   }, [recipe]);
 
@@ -68,20 +68,19 @@ const Recipein = () => {
             <section className={styles.imageSection}>
               <img
                 src={recipe.image}
-                alt={recipe.name}
+                alt={recipe.foodName}
                 className={styles.image}
               />
             </section>
             <section className={styles.infoSection}>
               <div className={styles.nameRating}>
-                <h2>{recipe.name}</h2>
-                <span className={styles.rating}>{recipe.rating}</span>
+                <h2>{recipe.foodName}</h2>
               </div>
               <div className={styles.recipeInfo}>
                 <h3>음식 정보</h3>
                 <p>칼로리: {recipe.calories}</p>
                 <p>기본 재료: {recipe.ingredients}</p>
-                <p>기본 레시피: {recipe.basicRecipe}</p>
+                <p>기본 레시피: {recipe.recipe}</p>
               </div>
             </section>
           </div>
@@ -93,7 +92,6 @@ const Recipein = () => {
             )}
             {videoIds.length > 0 && (
               <section className={styles.videoSection}>
-                <h3>레시피 동영상</h3>
                 {videoIds.map((videoId, index) => (
                   <iframe
                     key={index}
@@ -113,4 +111,4 @@ const Recipein = () => {
   );
 };
 
-export default Recipein;
+export default RecipeDetail;

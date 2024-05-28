@@ -38,8 +38,7 @@
 }
 
 .image {
-  width: 100%;
-  max-width: 150px;
+  max-width: 220px;
   height: auto;
 }
 
@@ -80,7 +79,6 @@ ul li {
   margin-right: 100px;
 }
 
-/* 추가된 스타일 */
 .videoSection {
   width: 100%;
   height: auto;
