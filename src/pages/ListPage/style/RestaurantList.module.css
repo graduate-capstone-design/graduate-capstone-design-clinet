@@ -54,9 +54,18 @@
 .li_detail {
   width: 500px;
   height: 80px;
-  background-color: yellow;
   position: absolute;
   top: 15px;
   right: 80px;
   font-size: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.image {
+  width: 300px;
+  height: 90%;
+  border: none;
+  display: inline-block;
+  content: "";
 }

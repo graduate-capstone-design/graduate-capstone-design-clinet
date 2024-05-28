@@ -23,7 +23,10 @@ const Router = () => {
         <Route path="userinfo" element={<UserInfo />} />
         <Route path="ranking" element={<Ranking />} />
         <Route path="search-history" element={<SearchHistory />} />
-        <Route path="search-result/restaurant" element={<RestaurantList />} />
+        <Route
+          path="search-result/restaurants/:foodname"
+          element={<RestaurantList />}
+        />
         <Route path="search-result/recipe" element={<RecipeList />} />
         <Route
           path="search-detail/:restaurant_name"
