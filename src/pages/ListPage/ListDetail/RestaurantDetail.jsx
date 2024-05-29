@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 // Style
 import styles from "./RestaurantDetail.module.css";
@@ -7,7 +8,20 @@ import styles from "./RestaurantDetail.module.css";
 import ResponsiveAppBar from "../../../components/Nav/ResponsiveAppBar";
 import MapComponent from "../../../components/Map/MapComponent";
 
+// Api
+import getRestaurantDetail from "../../../api/getRestaurantDetail";
+
 const RestaurantDetail = () => {
+  const { id } = useParams();
+
+  const handleDetailInfo = async () => {
+    const result = await getRestaurantDetail(id);
+  };
+
+  useEffect(() => {
+    handleDetailInfo();
+  }, []);
+
   return (
     <div className={styles.top}>
       <ResponsiveAppBar />

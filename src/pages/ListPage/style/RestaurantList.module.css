@@ -69,3 +69,8 @@
   display: inline-block;
   content: "";
 }
+
+.styled_link {
+  text-decoration: none;
+  color: inherit;
+}

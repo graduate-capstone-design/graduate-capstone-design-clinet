@@ -29,7 +29,7 @@ const Router = () => {
         />
         <Route path="search-result/recipe" element={<RecipeList />} />
         <Route
-          path="search-detail/:restaurant_name"
+          path="search-detail/restaurants/:id"
           element={<RestaurantDetail />}
         />
         <Route path="recipe/:query" element={<RecipePage />} />
