@@ -22,8 +22,9 @@ const RestaurantList = () => {
             <Link
               to={`/search-detail/restaurants/${data.id}`}
               className={styles.styled_link}
+              key={data.id}
             >
-              <li key={data.id} className={styles.li}>
+              <li className={styles.li}>
                 <div className={styles.li_index}>{index + 1}.</div>
                 <div className={styles.li_name}>
                   {data.name.length > 7
@@ -31,7 +32,7 @@ const RestaurantList = () => {
                     : data.name}
                 </div>
                 <div className={styles.li_detail}>
-                  {data.info}
+                  맛있는 음식점입니다.
                   {data.image !== null && (
                     <img className={styles.image} src={data.image} alt="" />
                   )}
