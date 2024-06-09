@@ -31,7 +31,7 @@ const Router = () => {
           element={<RecipeList />}
         />
         <Route
-          path="search-detail/:restaurant_name"
+          path="search-detail/restaurants/:id"
           element={<RestaurantDetail />}
         />
         <Route path="recipe-detail/:id" element={<RecipeDetail />} />
