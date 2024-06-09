@@ -64,7 +64,10 @@ const MapNaverDefault = ({ address }) => {
 
   return (
     <>
-      <div ref={mapElement} style={{ minWidth: "900px", minHeight: "400px" }} />
+      <div
+        ref={mapElement}
+        style={{ marginTop: "50px", width: "650px", height: "550px" }}
+      />
     </>
   );
 };
