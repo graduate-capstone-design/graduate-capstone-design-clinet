@@ -79,6 +79,23 @@ ul li {
   margin-right: 100px;
 }
 
+.likeBtn {
+  padding: 0 5px;
+
+  background-color: #f0c040;
+  border: none;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-right: 20px;
+}
+
+.likeBtn:hover {
+  background-color: #ffea2b;
+}
+
 .videoSection {
   width: 100%;
   height: auto;

@@ -60,6 +60,7 @@
   border-radius: 5px; /* 테두리 둥글게 만들기 */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
   overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+  margin-top: -10px;
 }
 
 .resultInfo {
@@ -83,12 +84,10 @@
 }
 
 .pagination {
-  transform: translateX(45%);
-  margin-top: -20px; /* 상단 마진을 줄임 */
+  margin-top: -20px;
 }
 
 .pagination button {
-  padding: 8px 16px;
   margin: 5px;
   background-color: #21de9f;
   color: #fff;

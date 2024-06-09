@@ -2,31 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ResponsiveAppBar from '../../../components/Nav/ResponsiveAppBar';
 import styles from './RecipeDetail.module.css';
-import getDetail from '../../../api/getDetail';
+import getDetail from '../../../api/getRecipeDetail';
+import fetchYouTubeVideos from '../../../api/getYoutubeAPI';
+import likeRecipe from '../../../api/getLikeAPI';
 
-// 유튜브 동영상을 검색하여 비디오 ID 배열을 설정하는 함수
-const fetchYouTubeVideos = async (recipeName, setVideoIds, setErrorMessage) => {
-  const API_KEY = 'AIzaSyCqItFIbQGul_PZDk_GG2JTcJ9LQ4odJ7E';
-  const query = `${recipeName} 레시피`;
-  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&q=${encodeURIComponent(
-    query
-  )}&key=${API_KEY}`;
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    if (data.items && data.items.length > 0) {
-      const ids = data.items.map((item) => item.id.videoId);
-      setVideoIds(ids);
-    }
-  } catch (error) {
-    console.error('Error fetching YouTube videos:', error);
-    setErrorMessage('유튜브 동영상을 불러오는 중 오류가 발생했습니다.');
-  }
-};
-
-// 레시피 정보를 API에서 가져와 설정하는 함수
-const fetchRecipe = async (id, setRecipe) => {
+const fetchRecipeDetails = async (id, setRecipe) => {
   try {
     const recipeData = await getDetail(id);
     setRecipe(recipeData);
@@ -35,22 +15,57 @@ const fetchRecipe = async (id, setRecipe) => {
   }
 };
 
+const VideoSection = ({ videoIds, error }) => (
+  <div className={styles.rightColumn}>
+    {error && (
+      <div className={styles.error}>
+        <p>{error}</p>
+      </div>
+    )}
+    {videoIds.length > 0 && (
+      <section className={styles.videoSection}>
+        {videoIds.map((videoId, index) => (
+          <iframe
+            key={index}
+            className={styles.videoIframe}
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title={`YouTube video player ${index + 1}`}
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ))}
+      </section>
+    )}
+  </div>
+);
+
 const RecipeDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState(null);
   const [videoIds, setVideoIds] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState('');
+  const [likes, setLikes] = useState(0);
 
   useEffect(() => {
-    fetchRecipe(id, setRecipe);
+    fetchRecipeDetails(id, setRecipe);
   }, [id]);
 
   useEffect(() => {
     if (recipe) {
-      fetchYouTubeVideos(recipe.foodName, setVideoIds, setErrorMessage);
+      fetchYouTubeVideos(recipe.foodName, setVideoIds, setError);
+      setLikes(recipe.likeCount);
     }
   }, [recipe]);
+
+  const handleLike = async () => {
+    try {
+      await likeRecipe(id);
+      setLikes((prev) => prev + 1);
+    } catch {
+      setError('추천을 보내는 중 오류가 발생했습니다.');
+    }
+  };
 
   if (!recipe) {
     return <div>Loading...</div>;
@@ -75,36 +90,19 @@ const RecipeDetail = () => {
             <section className={styles.infoSection}>
               <div className={styles.nameRating}>
                 <h2>{recipe.foodName}</h2>
+                <button className={styles.likeBtn} onClick={handleLike}>
+                  <p>추천수: {likes}</p>
+                </button>
               </div>
               <div className={styles.recipeInfo}>
                 <h3>음식 정보</h3>
                 <p>칼로리: {recipe.calories}</p>
-                <p>기본 재료: {recipe.ingredients}</p>
-                <p>기본 레시피: {recipe.recipe}</p>
+                <p>재료: {recipe.ingredients}</p>
+                <p>레시피: {recipe.recipe}</p>
               </div>
             </section>
           </div>
-          <div className={styles.rightColumn}>
-            {errorMessage && (
-              <div className={styles.error}>
-                <p>{errorMessage}</p>
-              </div>
-            )}
-            {videoIds.length > 0 && (
-              <section className={styles.videoSection}>
-                {videoIds.map((videoId, index) => (
-                  <iframe
-                    key={index}
-                    className={styles.videoIframe}
-                    src={`https://www.youtube.com/embed/${videoId}`}
-                    title={`YouTube video player ${index + 1}`}
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                ))}
-              </section>
-            )}
-          </div>
+          <VideoSection videoIds={videoIds} error={error} />
         </div>
       </div>
     </div>

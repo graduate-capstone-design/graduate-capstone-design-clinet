@@ -1,0 +1,101 @@
+.top {
+  width: 1280px;
+  height: 720px;
+  background-color: #fff;
+}
+
+.mainContainer {
+  width: 1280px;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.rankingTitle {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rankingContainer {
+  width: 65%;
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #f5f7fa;
+  overflow: auto;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.rankingList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rankingItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
+  margin-left: 35px;
+}
+
+.rank {
+  font-size: 24px;
+  font-weight: bold;
+  width: 50px;
+  text-align: center;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 35px;
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.likes {
+  font-size: 16px;
+  color: #888;
+}
+
+.trophy {
+  font-size: 40px;
+  margin-right: 150px;
+}
+
+.trophy.gold {
+  color: gold;
+}
+
+.trophy.silver {
+  color: silver;
+}
+
+.trophy.bronze {
+  color: #cd7f32;
+}

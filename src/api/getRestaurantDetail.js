@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const getRestaurantDetail = async (id) => {
   try {
@@ -8,7 +8,7 @@ const getRestaurantDetail = async (id) => {
     console.log(response);
     return response.data;
   } catch (err) {
-    console.log("Err >>", err);
+    console.log('Err >>', err);
   }
 };
 

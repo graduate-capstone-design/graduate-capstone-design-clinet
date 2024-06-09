@@ -9,7 +9,6 @@ const getDetail = async (id) => {
     return response.data;
   } catch (err) {
     console.error('Err >>', err);
-    throw err;
   }
 };
 

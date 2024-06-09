@@ -37,6 +37,18 @@ const Recipepage = () => {
           </button>
         </div>
         <div className={styles.mainContainer}>
+          {numResults > resultsPerPage && (
+            <div className={styles.pagination}>
+              {Array.from(
+                { length: Math.ceil(numResults / resultsPerPage) },
+                (_, i) => (
+                  <button key={i + 1} onClick={() => setCurrentPage(i + 1)}>
+                    {i + 1}
+                  </button>
+                )
+              )}
+            </div>
+          )}
           <ul className={styles.resultsContainer}>
             {searchResults.slice(startIndex, endIndex).map((result, index) => (
               <li
@@ -56,18 +68,6 @@ const Recipepage = () => {
               </li>
             ))}
           </ul>
-          {numResults > resultsPerPage && (
-            <div className={styles.pagination}>
-              {Array.from(
-                { length: Math.ceil(numResults / resultsPerPage) },
-                (_, i) => (
-                  <button key={i + 1} onClick={() => setCurrentPage(i + 1)}>
-                    {i + 1}
-                  </button>
-                )
-              )}
-            </div>
-          )}
         </div>
       </div>
     </div>

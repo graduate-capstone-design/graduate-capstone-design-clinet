@@ -32,7 +32,7 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = (url) => {
     setAnchorElNav(null);
-    navigate(url);
+    if (url) navigate(`/${url}`);
   };
 
   const handleCloseUserMenu = () => {
