@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // Style
@@ -13,9 +13,11 @@ import getRestaurantDetail from "../../../api/getRestaurantDetail";
 
 const RestaurantDetail = () => {
   const { id } = useParams();
+  const [address, setAddress] = useState("");
 
   const handleDetailInfo = async () => {
     const result = await getRestaurantDetail(id);
+    setAddress(result.address);
   };
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const RestaurantDetail = () => {
             제일 맛있는 돈까스세상에서 제일 맛있는 돈까스
           </div>
         </div>
-        <MapComponent />
+        <MapComponent address={address} />
       </div>
     </div>
   );
