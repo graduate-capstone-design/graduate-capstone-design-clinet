@@ -39,6 +39,9 @@ const MainPage = () => {
     navigate(`/search-result/${type}/${foodName}`, {
       state: { results, foodName },
     });
+
+    // 최근 검색어 저장
+    saveRecentSearch(foodName);
   };
 
   const handleKeyDown = (event) => {
@@ -47,7 +50,19 @@ const MainPage = () => {
     }
   };
 
-  console.log(search, inputValue);
+  const saveRecentSearch = (searchTerm) => {
+    let recentSearches =
+      JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+    recentSearches = recentSearches.filter((term) => term !== searchTerm);
+
+    recentSearches.unshift(searchTerm);
+
+    if (recentSearches.length > 12) {
+      recentSearches.pop();
+    }
+    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+  };
 
   return (
     <div className={styles.top}>
