@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 // Style
 import styles from "./style/RestaurantList.module.css";
@@ -7,18 +7,18 @@ import styles from "./style/RestaurantList.module.css";
 // Component
 import ResponsiveAppBar from "../../components/Nav/ResponsiveAppBar";
 
-const RestaurantList = () => {
+const RestaurantListRoutedByHistory = () => {
   const location = useLocation();
-  const { results, foodName } = location.state;
+  const { food, response } = location.state || {};
 
-  console.log(results);
+  console.log(food, response);
   return (
     <div className={styles.top}>
       <ResponsiveAppBar />
       <div className={styles.mainContainer}>
-        <div className={styles.searchResult}>{foodName}</div>
+        <div className={styles.searchResult}>{food}</div>
         <ul className={styles.ul}>
-          {results?.map((data, index) => (
+          {response?.map((data, index) => (
             <Link
               to={`/search-detail/restaurants/${data.id}`}
               className={styles.styled_link}
@@ -46,4 +46,4 @@ const RestaurantList = () => {
   );
 };
 
-export default RestaurantList;
+export default RestaurantListRoutedByHistory;

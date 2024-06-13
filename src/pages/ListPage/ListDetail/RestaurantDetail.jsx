@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // Style
@@ -13,29 +13,33 @@ import getRestaurantDetail from "../../../api/getRestaurantDetail";
 
 const RestaurantDetail = () => {
   const { id } = useParams();
+  const [data, setData] = useState();
 
   const handleDetailInfo = async () => {
     const result = await getRestaurantDetail(id);
+    setData(result);
   };
 
   useEffect(() => {
     handleDetailInfo();
   }, []);
 
+  console.log(data);
+
   return (
     <div className={styles.top}>
       <ResponsiveAppBar />
       <div className={styles.mainContainer}>
         <div className={styles.info_container}>
-          <div className={styles.info_name}>세상에서 제일 맛있는 돈까스</div>
-          <div className={styles.info_detail}>
-            세상에서 제일 맛있는 돈까스세상에서 제일 맛있는 돈까스세상에서 제일
-            맛있는 돈까스세상에서 제일 맛있는 돈까스세상에서 제일 맛있는
-            돈까스세상에서 제일 맛있는 돈까스세상에서 제일 맛있는 돈까스세상에서
-            제일 맛있는 돈까스세상에서 제일 맛있는 돈까스
+          <div className={styles.info_name}>
+            {data?.name.length > 10
+              ? `${data?.name.substring(0, 10)}...`
+              : data?.name}
           </div>
+          <div className={styles.info_phone}>Phone : {data?.number}</div>
+          <img className={styles.info_img} src={data?.image} />
         </div>
-        <MapComponent />
+        <MapComponent address={data?.address} />
       </div>
     </div>
   );
