@@ -30,7 +30,7 @@ const Recipepage = () => {
     <div className={styles.top}>
       <ResponsiveAppBar />
       <div className={styles.searchContainer}>
-        <h1 className={styles.searchCategory}>{foodName}</h1>
+        <div className={styles.searchCategory}>{foodName}</div>
         <div className={styles.buttonGroup}>
           <button className={styles.backBtn} onClick={() => navigate(-1)}>
             뒤로가기

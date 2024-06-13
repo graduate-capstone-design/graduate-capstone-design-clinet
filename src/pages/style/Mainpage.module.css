@@ -25,12 +25,7 @@
 }
 
 .btnTitle {
-<<<<<<< HEAD
-  font-family: 'Cute Font', 'Hi Melody', sans-serif;
-  font-size: 70px;
-=======
   font-size: 60px;
->>>>>>> origin/master
   text-align: center;
   margin-bottom: 30px;
 }
@@ -48,12 +43,7 @@
   border-radius: 8px;
   border: none;
   background-color: var(--base-color);
-<<<<<<< HEAD
-  font-family: 'Cute Font', 'Hi Melody', sans-serif;
-  font-size: 60px;
-=======
   font-size: 40px;
->>>>>>> origin/master
   transition: transform 0.3s;
 }
 
@@ -65,10 +55,6 @@
 .state {
   margin-top: 50px;
   font-size: 30px;
-<<<<<<< HEAD
-  font-family: 'Cute Font', 'Hi Melody', sans-serif;
-=======
->>>>>>> origin/master
 }
 
 .input {
@@ -79,22 +65,12 @@
   border: 3px solid var(--main-color);
   padding: 10px 0 10px 20px;
   box-sizing: border-box;
-<<<<<<< HEAD
-  font-family: 'Cute Font', 'Hi Melody', sans-serif;
-  font-size: 30px;
-=======
   font-size: 20px;
->>>>>>> origin/master
   color: #0f473f;
 }
 
 .input::placeholder {
-<<<<<<< HEAD
-  font-family: 'Cute Font', 'Hi Melody', sans-serif;
-  font-size: 30px;
-=======
   font-size: 20px;
->>>>>>> origin/master
   color: #0f473f;
 }
 

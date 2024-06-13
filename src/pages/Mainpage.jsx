@@ -52,7 +52,7 @@ const MainPage = () => {
 
   const saveRecentSearch = (searchTerm) => {
     let recentSearches =
-      JSON.parse(localStorage.getItem("recentSearches")) || [];
+      JSON.parse(localStorage.getItem('recentSearches')) || [];
 
     recentSearches = recentSearches.filter((term) => term !== searchTerm);
 
@@ -61,7 +61,7 @@ const MainPage = () => {
     if (recentSearches.length > 12) {
       recentSearches.pop();
     }
-    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+    localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
   };
 
   return (

@@ -1,13 +1,14 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // Style
-import styles from "./style/RestaurantList.module.css";
+import styles from './style/RestaurantList.module.css';
 
 // Component
-import ResponsiveAppBar from "../../components/Nav/ResponsiveAppBar";
+import ResponsiveAppBar from '../../components/Nav/ResponsiveAppBar';
 
 const RestaurantList = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { results, foodName } = location.state;
 
@@ -17,6 +18,11 @@ const RestaurantList = () => {
       <ResponsiveAppBar />
       <div className={styles.mainContainer}>
         <div className={styles.searchResult}>{foodName}</div>
+        <div className={styles.buttonGroup}>
+          <button className={styles.backBtn} onClick={() => navigate(-1)}>
+            뒤로가기
+          </button>
+        </div>
         <ul className={styles.ul}>
           {results?.map((data, index) => (
             <Link

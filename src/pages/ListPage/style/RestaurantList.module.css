@@ -17,6 +17,28 @@
   font-size: 50px;
 }
 
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: -10px;
+}
+
+.backBtn {
+  padding: 10px 20px;
+  background-color: #83d0a1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 1125px;
+}
+
+.backBtn:hover {
+  background-color: #45815c;
+}
+
 .ul {
   width: 1000px;
   height: 500px;
