@@ -55,3 +55,12 @@
   align-items: center;
   font-size: 40px;
 }
+
+.delete_btn {
+  width: 100px;
+  height: 30px;
+  background-color: var(--main-color);
+  border: none;
+  border-radius: 8px;
+  margin-top: 30px;
+}

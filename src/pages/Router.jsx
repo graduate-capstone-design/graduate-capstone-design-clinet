@@ -13,6 +13,7 @@ import RecipeIn from "./RecipeIn";
 import RestaurantList from "./ListPage/RestaurantList";
 import RecipeList from "./ListPage/RecipeList";
 import RestaurantDetail from "./ListPage/ListDetail/RestaurantDetail";
+import RestaurantListRoutedByHistory from "./ListPage/RestaurantListRoutedByHistory";
 
 const Router = () => {
   return (
@@ -26,6 +27,10 @@ const Router = () => {
         <Route
           path="search-result/restaurants/:foodname"
           element={<RestaurantList />}
+        />
+        <Route
+          path="search-result/restaurant-by-history/:foodname"
+          element={<RestaurantListRoutedByHistory />}
         />
         <Route path="search-result/recipe" element={<RecipeList />} />
         <Route
